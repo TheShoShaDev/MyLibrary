@@ -1,4 +1,6 @@
-﻿namespace MyLibrary
+﻿using NUnit.Framework;
+
+namespace MyLibrary
 {
 	public class MyArea
 	{
@@ -26,7 +28,42 @@
 			*/
 		}
 
+		[TestFixture]
+		public class MyAreaTests
+		{
+			MyArea TestingClass = new MyArea();
 
+			[Test]
+			public void FindCircleArea_Test()
+			{
+				float radius = 5.0f;
+				float expectedArea = 78.5f;
+				float actualArea = TestingClass.FindCircleArea(radius);
+				Assert.AreEqual(expectedArea, actualArea, 0.01f);
+			}
+
+			[Test]
+			public void FideTriangeArea_Test()
+			{
+				float side1 = 3.0f;
+				float side2 = 4.0f;
+				float side3 = 5.0f;
+				float expectedArea = 6.0f;
+				float actualArea = TestingClass.FideTriangeArea(side1, side2, side3);
+				Assert.AreEqual(expectedArea, actualArea, 0.01f);
+			}
+
+			[Test]
+			public void IsTriangleStraight_Test()
+			{
+				float sideA = 3.0f;
+				float sideB = 4.0f;
+				float sideC = 5.0f;
+				bool expectedIsRightAngle = true;
+				bool actualIsRightAngle = TestingClass.IsTriangleStraight(sideA, sideB, sideC);
+				Assert.IsTrue(actualIsRightAngle);
+			}
+		}
 
 	}
 }
